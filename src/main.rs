@@ -54,6 +54,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 pub fn health_checker_handler() -> impl Responder {
-    const MESSAGE: String = String::new("Health Check Work");
+    const MESSAGE: &str = "Health Check Work";
     HttpResponse::Ok().json(json!({"status":"success", "message":MESSAGE}))
 }
