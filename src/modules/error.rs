@@ -1,7 +1,6 @@
 use std::fmt;
 
 use actix_web::{HttpResponse, ResponseError};
-use argon2::password_hash::rand_core::Error;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Deserialize, Serialize)]

@@ -2,19 +2,16 @@ use crate::modules::error::ErrorMessage;
 use argon2::password_hash::SaltString;
 use argon2::password_hash::rand_core::OsRng;
 use argon2::{Argon2, PasswordHash, PasswordHasher, PasswordVerifier};
-use futures_util::future::ok;
-use std::ptr::null;
-use validator::ValidateLength;
 
 const MAX_PASSWORD_LENGTH: usize = 64;
 
 pub fn hash(password: impl Into<String>) -> Result<String, ErrorMessage> {
     let password: String = password.into();
-    if (password.is_empty()) {
+    if password.is_empty() {
         return Err(ErrorMessage::EmptyPassword);
     }
 
-    if (password.len() > MAX_PASSWORD_LENGTH) {
+    if password.len() > MAX_PASSWORD_LENGTH {
         return Err(ErrorMessage::ExeedMaxPasswordLength(MAX_PASSWORD_LENGTH));
     }
 
