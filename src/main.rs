@@ -4,6 +4,8 @@ use serde_json::json;
 use sqlx::postgres::PgPoolOptions;
 mod modules;
 use modules::{config::Config, db::DBClient};
+mod dtos;
+mod utils;
 
 #[derive(Debug, Clone)]
 pub struct AppState {
